@@ -14,10 +14,10 @@ pip install -r requirements.txt
 
 The datasets were prepared by examining the following studies:
 
-RDD2020: An Image Dataset for Smartphone-based Road Damage Detection and Classification[1]
-Road surface detection and differentiation considering surface damages [2]
-Detecting potholes using simple image processing techniques and real-world footage [3]
-A Comparison of Low-Cost Monocular Vision Techniques for Pothole Distance Estimation [4]
+<br>RDD2020: An Image Dataset for Smartphone-based Road Damage Detection and Classification[1]
+<br>Road surface detection and differentiation considering surface damages [2]
+<br>Detecting potholes using simple image processing techniques and real-world footage [3]
+<br>A Comparison of Low-Cost Monocular Vision Techniques for Pothole Distance Estimation [4]
 
 ```sh
  https://app.roboflow.com/ds/WcKTZGNMLH?key=5P7rZneRe4
