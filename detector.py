@@ -11,6 +11,8 @@ import pyzed.sl as sl
 import torch.backends.cudnn as cudnn
 import time
 
+import math
+
 sys.path.insert(0, './yolov5')
 from models.experimental import attempt_load
 from utils.general import check_img_size, non_max_suppression, scale_coords, xyxy2xywh
@@ -338,15 +340,21 @@ class Detector:
                         # print(object_pos)
                         # print("Objenin kameraya olan dik uzaklığı: ",  objects.object_list[0].position[1])
                         for l in objects.object_list:
-                            DistanceToDamege.append(l.position[1])
+                            DistanceToDamege.append([l.position[1], l.position[2]])      # l.position[1] -> Dikey Derinlik, l.position[2] -> Aracın çukura olan uzaklığı
                     except:
                         pass
-
+                    self.window.inputs.clear.emit()
                     if DistanceToDamege is not None and DistanceToRoadSurface is not None:
-                        i=0
-                        for distances in DistanceToDamege:
-                            print(i, ". Çukur derinliği : ", round((distances + DistanceToRoadSurface)*(-1),3)*1000, " mm")
-                            i+=1
+                        if not math.isnan(DistanceToRoadSurface):
+                            i=1
+                            for distance in DistanceToDamege:
+                                if not math.isnan(distance[0]) and not math.isnan(distance[1]):
+                                    distToRoad = str(round((distance[0] + DistanceToRoadSurface)*(-1),3)*1000)+ " mm"
+                                    distToCar = str(round(distance[1],3))+"m"
+                                    # print(i, ". Çukur derinliği : ", distToRoad, "  ", distToCar)
+                                    self.window.inputs.input.emit([i, distToRoad, distToCar])
+                                    i+=1
+
                     cv_viewer.render_2D(image_left_ocv, image_scale, objects, obj_param.enable_tracking)
                     #global_image = cv2.hconcat([image_left_ocv, image_track_ocv])
                     # Tracking view
