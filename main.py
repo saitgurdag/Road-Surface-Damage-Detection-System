@@ -17,7 +17,7 @@ class main(QMainWindow):
 
     def __init__(self):
         super(main, self).__init__()
-        self.setFixedSize(1024, 600)
+        self.setFixedSize(1000, 680)
         call=uic.loadUi('form.ui',self)
         call.meshOnOff.clicked.connect(self.meshOnOffClicked)
         timer = threading.Timer(0.1, self.run)
@@ -29,7 +29,7 @@ class main(QMainWindow):
         print(self.floor_mesh_active)
 
     def run(self):
-        self.dt = Detector(self, weights='weights\\04042022_best.pt', svo=None, img_size=416, conf_thres=0.4)
+        self.dt = Detector(self, weights='weights\\04042022_best.pt', svo=None, img_size=1024, conf_thres=0.2 )
 
     def displayImage(self,lbl, img,window=1):
         qformat=QImage.Format_Indexed8

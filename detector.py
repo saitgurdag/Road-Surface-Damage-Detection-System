@@ -245,11 +245,10 @@ class Detector:
         py_translation = sl.Translation()
 
         while not self.exit_signal:     #     while viewer.is_available() and not exit_signal:  VIEWER'ı tekrar devreye almak için gerekli
+            DistanceToRoadSurface=None
+            DistanceToDamege=[]
             if self.window.floor_mesh_active: 
-                print("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
-                print(self.mesh_viewer)
                 if not self.ctrl:
-                    print("devamke")
                     self.meshViewerInit()
                     self.ctrl = True
                 if self.mesh_viewer.is_available():
@@ -294,7 +293,8 @@ class Detector:
                             except:
                                 pass
                         translation = pose.get_translation(py_translation)
-                        # print(round(plane.get_closest_distance(),3) + round(translation.get()[1],3))
+                        # print("Yola Olan Uzaklık : ", round(plane.get_closest_distance(),3) + round(translation.get()[1],3))
+                        DistanceToRoadSurface = plane.get_closest_distance() + translation.get()[1]
                         
                     if self.window.floor_mesh_active:
                         try:
@@ -334,12 +334,19 @@ class Detector:
                     # cv2.waitKey(1)
                     try:
                         # print(objects.object_list[0].bounding_box_2d)
-                        object_pos=(objects.object_list[0].bounding_box_2d)*0.5
+                        # object_pos=(objects.object_list[0].bounding_box_2d)*0.5
                         # print(object_pos)
-                        # print(objects.object_list[0].position)
+                        # print("Objenin kameraya olan dik uzaklığı: ",  objects.object_list[0].position[1])
+                        for l in objects.object_list:
+                            DistanceToDamege.append(l.position[1])
                     except:
-                        # print("olmadı abi")
                         pass
+
+                    if DistanceToDamege is not None and DistanceToRoadSurface is not None:
+                        i=0
+                        for distances in DistanceToDamege:
+                            print(i, ". Çukur derinliği : ", round((distances + DistanceToRoadSurface)*(-1),3)*1000, " mm")
+                            i+=1
                     cv_viewer.render_2D(image_left_ocv, image_scale, objects, obj_param.enable_tracking)
                     #global_image = cv2.hconcat([image_left_ocv, image_track_ocv])
                     # Tracking view

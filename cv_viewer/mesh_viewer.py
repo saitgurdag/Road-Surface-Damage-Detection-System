@@ -65,7 +65,7 @@ void main() {
 """
 
 def get_plane_color(_type):
-    print("1")
+    # print("1")
     """
     Get plane color according to its type
     """
@@ -99,11 +99,11 @@ class Shader:
         glDeleteShader(fragment_id)
 
     def compile(self, _type, _src):
-        print("2")
+        # print("2")
         try:
             shader_id = glCreateShader(_type)
             if shader_id == 0:
-                print("ERROR: shader type {0} does not exist".format(_type))
+                # print("ERROR: shader type {0} does not exist".format(_type))
                 exit()
 
             glShaderSource(shader_id, _src)
@@ -118,7 +118,7 @@ class Shader:
             raise
 
     def get_program_id(self):
-        print("3")
+        # print("3")
         return self.program_id
 
 class MeshObject:
@@ -131,14 +131,14 @@ class MeshObject:
         self.type = sl.PLANE_TYPE.UNKNOWN
 
     def alloc(self):
-        print("4")
+        # print("4")
         self.vboID = glGenBuffers(3)
         self.shader_image = Shader(MESH_VERTEX_SHADER, MESH_FRAGMENT_SHADER)
         self.shader_MVP = glGetUniformLocation(self.shader_image.get_program_id(), "u_mvpMatrix")
         self.shader_color_loc = glGetUniformLocation(self.shader_image.get_program_id(), "u_color")
 
     def update_mesh(self, _vertices, _triangles, _border):
-        print("5")
+        # print("5")
         if not self.need_update:
             self.vert = _vertices.flatten().astype(np.float32)
             self.tri = _triangles.flatten().astype(np.uintc)
@@ -162,7 +162,7 @@ class MeshObject:
             self.need_update = True
 
     def push_to_GPU(self):
-        print("6")
+        # print("6")
         if self.need_update:
             if len(self.vert):
                 glBindBuffer(GL_ARRAY_BUFFER, self.vboID[0])
@@ -182,7 +182,7 @@ class MeshObject:
             self.need_update = False
 
     def draw(self):
-        print("7")
+        # print("7")
         if self.current_fc:
             glEnableVertexAttribArray(0)
             glBindBuffer(GL_ARRAY_BUFFER, self.vboID[0])
@@ -205,7 +205,7 @@ class UserAction:
         self.hit_coord = []
 
     def clear(self):
-        print("8")
+        # print("8")
         self.press_space = False
         self.hit = False
 
@@ -219,12 +219,12 @@ class ImageHandler:
         self.quad_vb = 0
 
     def close(self):
-        print("9")
+        # print("9")
         if self.image_tex:
             self.image_tex = 0
 
     def initialize(self, _res):    
-        print("10")
+        # print("10")
         self.shader_image = Shader(IMAGE_VERTEX_SHADER, IMAGE_FRAGMENT_SHADER)
         self.tex_id = glGetUniformLocation( self.shader_image.get_program_id(), "texImage")
 
@@ -262,13 +262,13 @@ class ImageHandler:
         glBindTexture(GL_TEXTURE_2D, 0)   
 
     def push_new_image(self, _zed_mat):
-        print("11")
+        # print("11")
         glBindTexture(GL_TEXTURE_2D, self.image_tex)
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, _zed_mat.get_width(), _zed_mat.get_height(), GL_RGBA, GL_UNSIGNED_BYTE,  ctypes.c_void_p(_zed_mat.get_pointer()))
         glBindTexture(GL_TEXTURE_2D, 0)            
 
     def draw(self):
-        print("12")
+        # print("12")
         glUseProgram(self.shader_image.get_program_id())
         glActiveTexture(GL_TEXTURE0)
         glBindTexture(GL_TEXTURE_2D, self.image_tex)
@@ -372,7 +372,7 @@ class GLViewer:
         self.detector=detector
 
     def set_render_camera_projection(self, _params):
-        print("13")
+        # print("13")
         # Just slightly move up the ZED camera FOV to make a small black border
         fov_y = (_params.v_fov + 0.5) * M_PI / 180
         fov_x = (_params.h_fov + 0.5) * M_PI / 180
@@ -385,19 +385,19 @@ class GLViewer:
         self.projection[(3,3)] = 0.
     
     def print_GL(self, _x, _y, _string):
-        print("14")
+        # print("14")
         glRasterPos(_x, _y)
         for i in range(len(_string)):
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, ctypes.c_int(ord(_string[i])))
 
     def is_available(self):
-        print("15")
+        # print("15")
         if self.available:
             glutMainLoopEvent()
         return self.available
     
     def update_mesh(self, _mesh, _type):
-        print("17")
+        # print("17")
         self.mutex.acquire()
         edges = _mesh.get_boundaries()
         self.mesh_object.update_mesh(_mesh.vertices, _mesh.triangles, edges)
@@ -405,7 +405,7 @@ class GLViewer:
         self.mutex.release()
 
     def update_view(self, _image, _pose, _tracking_state):  
-        print("18")   
+        # print("18")   
         self.mutex.acquire()
         if self.available:
             # update image
@@ -420,25 +420,25 @@ class GLViewer:
         return copy
 
     def idle(self):
-        print("19")
+        # print("19")
         if self.available:
             glutPostRedisplay()
 
     def exit(self):    
-        print("20")  
+        # print("20")  
         if self.available:
             self.available = False
             self.image_handler.close()
 
     def close_func(self): 
-        print("21")  
+        # print("21")  
         if self.available:
             self.available = False
             self.image_handler.close()      
 
 
     def keyReleasedCallback(self, key, x, y):
-        print("22")
+        # print("22")
         if ord(key) == 113 or ord(key) == 27:   # Esc or 'q' key
             self.close_func()
         if ord(key) == 32:      # space bar
@@ -447,7 +447,7 @@ class GLViewer:
             self.user_action.hit = True
 
     def draw_callback(self):
-        print("23")
+        # print("23")
         if self.available:
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
             glClearColor(0, 0, 0, 1.0)
@@ -462,13 +462,13 @@ class GLViewer:
             # glutPostRedisplay()
 
     def reshape_callback(self, _width, _height):
-        print("24")
+        # print("24")
         glViewport(0, 0, int(_width), int(_height))
         self.wnd_w = _width
         self.wnd_h = _height
 
     def mouse_button_callback(self, _button, _state, _x, _y):
-        print("25")
+        # print("25")
         # Action right, left, middle click
         if _button < 3:
             if _state == GLUT_DOWN:
@@ -477,14 +477,14 @@ class GLViewer:
                 self.user_action.hit_coord[1] = (_y / (1. * self.wnd_h))
 
     def update(self):
-        print("26")
+        # print("26")
         # Update GPU data
         if self.new_data:
             self.mesh_object.push_to_GPU()
             self.new_data = False
 
     def draw(self):  
-        print("27")
+        # print("27")
         if self.available:
             self.image_handler.draw()
 
@@ -536,7 +536,7 @@ class GLViewer:
             self.detector.IMGWithFloor = np.array(image)    
 
     def print_text(self):
-        print("28")
+        # print("28")
         if self.available:
             if self.tracking_state != sl.POSITIONAL_TRACKING_STATE.OK:
                 glColor4f(0.85, 0.25, 0.15, 1.)

@@ -62,15 +62,15 @@ def render_2D(left_display, img_scale, objects, is_tracking_on):
             # Display Object label as text
             position_image = get_image_position(obj.bounding_box_2d, img_scale)
             text_position = (int(position_image[0] - 20), int(position_image[1] - 12))
-            text = "class " + str(obj.raw_label)
+            # text = "class " + str(obj.raw_label)
             text_color = (255, 255, 255, 255)
-            cv2.putText(left_display, text, text_position, cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, text_color, 1)
+            # cv2.putText(left_display, text, text_position, cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, text_color, 1)
 
             # Diplay Object distance to camera as text
             if np.isfinite(obj.position[2]):
                 text = str(round(abs(obj.position[2]), 1)) + "M"
                 text_position = (int(position_image[0] - 20), int(position_image[1]))
-                cv2.putText(left_display, text, text_position, cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, text_color, 1)
+                cv2.putText(left_display, text, text_position, cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, text_color, 1)
 
     # Here, overlay is as the left image, but with opaque masks on each detected objects
     cv2.addWeighted(left_display, 0.7, overlay, 0.3, 0.0, left_display)
