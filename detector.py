@@ -349,10 +349,21 @@ class Detector:
                             i=1
                             for distance in DistanceToDamege:
                                 if not math.isnan(distance[0]) and not math.isnan(distance[1]):
-                                    distToRoad = str(round((distance[0] + DistanceToRoadSurface)*(-1),3)*1000)+ " mm"
-                                    distToCar = str(round(distance[1],3))+"m"
+                                    print(distance[0], "     ", DistanceToRoadSurface)
+                                    distToRoad = round(((distance[0] + DistanceToRoadSurface)*(-1000)),3)
+                                    distToRoad_txt = str(distToRoad)+ " mm"
+                                    distToCar = (round(distance[1],3))*-1
+                                    distToCar_txt = str(distToCar)+" m"
+
+                                    if distToCar > 5:
+                                        rankOfDanger = 0
+                                    elif distToCar < 5:
+                                        if (distToRoad>=0 and distToRoad < 10) or (distToRoad<=0 and distToRoad > -10):
+                                            rankOfDanger = 1
+                                        else:
+                                            rankOfDanger = 2
                                     # print(i, ". Çukur derinliği : ", distToRoad, "  ", distToCar)
-                                    self.window.inputs.input.emit([i, distToRoad, distToCar])
+                                    self.window.inputs.input.emit([i, distToRoad_txt, distToCar_txt, rankOfDanger])
                                     i+=1
 
                     cv_viewer.render_2D(image_left_ocv, image_scale, objects, obj_param.enable_tracking)
