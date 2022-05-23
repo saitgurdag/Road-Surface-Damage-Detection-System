@@ -180,7 +180,7 @@ class Detector:
         init_params.coordinate_units = sl.UNIT.METER
         init_params.depth_mode = sl.DEPTH_MODE.ULTRA  # QUALITY
         init_params.coordinate_system = sl.COORDINATE_SYSTEM.RIGHT_HANDED_Y_UP
-        init_params.depth_maximum_distance = 50
+        init_params.depth_maximum_distance = 20
 
         runtime_params = sl.RuntimeParameters()
         runtime_params.measure3D_reference_frame = sl.REFERENCE_FRAME.WORLD
@@ -280,7 +280,6 @@ class Detector:
                         # Compute elapse time since the last call of plane detection
                         duration = time.time() - last_call  
                         # Ask for a mesh update on mouse click
-
                         # Check if 500 ms have elapsed since last mesh request
                         if duration > .8 :
                             # Update pose data (used for projection of the mesh over the current image)
@@ -296,7 +295,7 @@ class Detector:
                                 pass
                         translation = pose.get_translation(py_translation)
                         # print("Yola Olan Uzaklık : ", round(plane.get_closest_distance(),3) + round(translation.get()[1],3))
-                        DistanceToRoadSurface = plane.get_closest_distance() + translation.get()[1]
+                        DistanceToRoadSurface = plane.get_closest_distance(translation.get())
                         
                     if self.window.floor_mesh_active:
                         try:
