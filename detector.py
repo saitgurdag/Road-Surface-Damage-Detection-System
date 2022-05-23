@@ -357,7 +357,7 @@ class Detector:
                                     if distToCar > 5:
                                         rankOfDanger = 0
                                     elif distToCar < 5:
-                                        if (distToRoad>=0 and distToRoad < 10) or (distToRoad<=0 and distToRoad > -10):
+                                        if (distToRoad>=0 and distToRoad < 75) or (distToRoad<=0 and distToRoad > -75):
                                             rankOfDanger = 1
                                         else:
                                             rankOfDanger = 2
