@@ -123,9 +123,9 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>408</x>
       <y>430</y>
-      <width>81</width>
+      <width>41</width>
       <height>16</height>
      </rect>
     </property>
@@ -135,13 +135,13 @@
      </font>
     </property>
     <property name="text">
-     <string>Hasar Derecesi</string>
+     <string>Klasse</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>276</x>
       <y>430</y>
       <width>81</width>
       <height>16</height>
@@ -153,15 +153,15 @@
      </font>
     </property>
     <property name="text">
-     <string>Hasar Derinliği</string>
+     <string>Schadenstiefe</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>136</x>
       <y>430</y>
-      <width>101</width>
+      <width>111</width>
       <height>16</height>
      </rect>
     </property>
@@ -171,13 +171,13 @@
      </font>
     </property>
     <property name="text">
-     <string>Araca Olan Mesafe</string>
+     <string>Entfernung z. Schaden</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>72</x>
       <y>430</y>
       <width>81</width>
       <height>16</height>
@@ -189,7 +189,7 @@
      </font>
     </property>
     <property name="text">
-     <string>No</string>
+     <string>Nr.</string>
     </property>
    </widget>
   </widget>

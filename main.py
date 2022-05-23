@@ -91,7 +91,7 @@ class main(QMainWindow):
         print(self.floor_mesh_active)
 
     def run(self):
-        self.dt = Detector(self, weights='weights\\05052022_best.pt', svo=None, img_size=1280, conf_thres=0.2 )
+        self.dt = Detector(self, weights='weights\\yolov5s.pt', svo=None, img_size=416, conf_thres=0.6)
 
     def displayImage(self,lbl, img,window=1):
         qformat=QImage.Format_Indexed8

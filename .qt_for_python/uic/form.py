@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\sait_\Desktop\Road_Surface_Damage_Detection_System\Road-Surface-Damage-Detection-System\form.ui'
+# Form implementation generated from reading ui file 'c:\Users\sait_\Desktop\Version-2\Road-Surface-Damage-Detection-System\form.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -56,25 +56,25 @@ class Ui_mainWin(object):
         self.listWidget.setGeometry(QtCore.QRect(60, 450, 421, 191))
         self.listWidget.setObjectName("listWidget")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(380, 430, 81, 16))
+        self.label_4.setGeometry(QtCore.QRect(408, 430, 41, 16))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(270, 430, 81, 16))
+        self.label_5.setGeometry(QtCore.QRect(276, 430, 81, 16))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(130, 430, 101, 16))
+        self.label_6.setGeometry(QtCore.QRect(136, 430, 111, 16))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(70, 430, 81, 16))
+        self.label_7.setGeometry(QtCore.QRect(72, 430, 81, 16))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_7.setFont(font)
@@ -92,7 +92,7 @@ class Ui_mainWin(object):
         _translate = QtCore.QCoreApplication.translate
         mainWin.setWindowTitle(_translate("mainWin", "main"))
         self.meshOnOff.setText(_translate("mainWin", "  Mesh"))
-        self.label_4.setText(_translate("mainWin", "Hasar Derecesi"))
-        self.label_5.setText(_translate("mainWin", "Hasar Derinliği"))
-        self.label_6.setText(_translate("mainWin", "Araca Olan Mesafe"))
-        self.label_7.setText(_translate("mainWin", "No"))
+        self.label_4.setText(_translate("mainWin", "Klasse"))
+        self.label_5.setText(_translate("mainWin", "Schadenstiefe"))
+        self.label_6.setText(_translate("mainWin", "Entfernung z. Schaden"))
+        self.label_7.setText(_translate("mainWin", "Nr."))
