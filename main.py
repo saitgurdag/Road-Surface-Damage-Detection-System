@@ -75,8 +75,10 @@ class main(QMainWindow):
         self.listWidget.setItemWidget(item, row)
 
     def run(self):
+
         self.dt = Detector(self, weights='weights\\05052022_best.pt', svo=None, img_size=736, conf_thres=0.4)
-        # weights\test_notebook_best.pt ev ortamında not defteri ile test yaparken kullanılabilir.
+        # weights\\test_notebook_best.pt ev ortamında not defteri ile test yaparken kullanılabilir.
+
 
     def displayImage(self,lbl, img,window=1):
         qformat=QImage.Format_Indexed8

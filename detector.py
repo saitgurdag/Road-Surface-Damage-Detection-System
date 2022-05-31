@@ -248,7 +248,6 @@ class Detector:
 
                     while self.run_signal:
                         sleep(0.001)
-
                     
                     self.lock.acquire()
 
@@ -271,6 +270,7 @@ class Detector:
                     except:                                                                # l.dimensions[1] -> Cismin boyu(dikeyde)
                         pass
                     self.window.inputs.clear.emit()
+
                     if DistanceToDamege is not None:
                         i=1
                         for distance in DistanceToDamege:
@@ -291,6 +291,7 @@ class Detector:
 
                                 self.window.inputs.input.emit([i, distToRoad_txt, distToCar_txt, rankOfDanger])
                                 i+=1
+
 
                     cv_viewer.render_2D(image_left_ocv, image_scale, objects, obj_param.enable_tracking)
 

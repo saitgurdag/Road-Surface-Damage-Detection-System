@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\sait_\Desktop\Road_Surface_Damage_Detection_System\Road-Surface-Damage-Detection-System\form.ui'
+# Form implementation generated from reading ui file 'c:\Users\sait_\Desktop\Version-1\Road-Surface-Damage-Detection-System\form.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
