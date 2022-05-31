@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\sait_\Desktop\Version-2\Road-Surface-Damage-Detection-System\form.ui'
+# Form implementation generated from reading ui file 'c:\Users\sait_\Desktop\Version-1\Road-Surface-Damage-Detection-System\form.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -40,41 +40,29 @@ class Ui_mainWin(object):
 "")
         self.trackImage.setText("")
         self.trackImage.setObjectName("trackImage")
-        self.meshOnOff = QtWidgets.QPushButton(self.centralwidget)
-        self.meshOnOff.setGeometry(QtCore.QRect(770, 430, 100, 40))
-        font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        self.meshOnOff.setFont(font)
-        self.meshOnOff.setIconSize(QtCore.QSize(40, 40))
-        self.meshOnOff.setObjectName("meshOnOff")
         self.listWidget = QtWidgets.QListWidget(self.centralwidget)
         self.listWidget.setGeometry(QtCore.QRect(60, 450, 421, 191))
         self.listWidget.setObjectName("listWidget")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(408, 430, 41, 16))
+        self.label_4.setGeometry(QtCore.QRect(408, 430, 41, 20))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(276, 430, 81, 16))
+        self.label_5.setGeometry(QtCore.QRect(290, 430, 81, 20))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(136, 430, 111, 16))
+        self.label_6.setGeometry(QtCore.QRect(140, 430, 121, 20))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(72, 430, 81, 16))
+        self.label_7.setGeometry(QtCore.QRect(80, 430, 81, 20))
         font = QtGui.QFont()
         font.setUnderline(True)
         self.label_7.setFont(font)
@@ -91,7 +79,6 @@ class Ui_mainWin(object):
     def retranslateUi(self, mainWin):
         _translate = QtCore.QCoreApplication.translate
         mainWin.setWindowTitle(_translate("mainWin", "main"))
-        self.meshOnOff.setText(_translate("mainWin", "  Mesh"))
         self.label_4.setText(_translate("mainWin", "Klasse"))
         self.label_5.setText(_translate("mainWin", "Schadenstiefe"))
         self.label_6.setText(_translate("mainWin", "Entfernung z. Schaden"))

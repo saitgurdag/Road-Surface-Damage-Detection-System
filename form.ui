@@ -81,35 +81,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="meshOnOff">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>430</y>
-      <width>100</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>MS Shell Dlg 2</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>  Mesh</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>40</width>
-      <height>40</height>
-     </size>
-    </property>
-   </widget>
    <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
@@ -126,7 +97,9 @@
       <x>408</x>
       <y>430</y>
       <width>41</width>
-      <height>16</height>
+
+      <height>20</height>
+
      </rect>
     </property>
     <property name="font">
@@ -141,10 +114,12 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>276</x>
+
+      <x>290</x>
+
       <y>430</y>
       <width>81</width>
-      <height>16</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -159,10 +134,12 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>136</x>
+
+      <x>140</x>
       <y>430</y>
-      <width>111</width>
-      <height>16</height>
+      <width>121</width>
+      <height>20</height>
+
      </rect>
     </property>
     <property name="font">
@@ -177,10 +154,12 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>72</x>
+
+      <x>80</x>
+
       <y>430</y>
       <width>81</width>
-      <height>16</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">

@@ -13,8 +13,7 @@ import threading
 from detector import Detector
 
 class Communicate(QObject):                                                 
-    # create two new signals on the fly: one will handle                    
-    # int type, the other will handle strings                               
+                           
     input = pyqtSignal(list)  
     clear = pyqtSignal()                                            
 
@@ -26,9 +25,9 @@ class ListItem(QWidget):
 
         self.row = QHBoxLayout()
 
-        self.row.addWidget(QLabel("  "+itemNo))
+        self.row.addWidget(QLabel("   "+itemNo))
         self.row.addWidget(QLabel(distToCar))
-        self.row.addWidget(QLabel(distToRoad))
+        self.row.addWidget(QLabel("        "+distToRoad))
         status = QPushButton()
         if rankOfDanger==1:
             status.setIcon(QIcon("assets\\yellow.png"))
@@ -37,9 +36,7 @@ class ListItem(QWidget):
         else:
             status.setIcon(QIcon("assets\\green.png"))
         status.setStyleSheet(" background: transparent")
-        # pixmap = QPixmap("assets\yellow.png")
-        # qLabel.setPixmap(pixmap)
-        # qLabel.setMask(pixmap.mask())
+
         self.row.addWidget(status)
 
         self.setLayout(self.row)
@@ -55,11 +52,6 @@ class main(QMainWindow):
         super(main, self).__init__()
         self.setFixedSize(1000, 680)
         self.call=uic.loadUi('form.ui',self)
-        self.call.meshOnOff.setIcon(QIcon("assets\off-button.png"))
-        self.call.meshOnOff.setStyleSheet(" background: transparent")
-        self.call.meshOnOff.setFixedSize(QSize(100,30))
-        self.call.meshOnOff.setIconSize(QSize(48,48))
-        self.call.meshOnOff.clicked.connect(self.meshOnOffClicked)
         self.listWidget = self.call.listWidget
         self.inputs = Communicate() 
         self.inputs.input.connect(self.addItemToListWidget)
@@ -79,19 +71,14 @@ class main(QMainWindow):
         row = ListItem(itemNo=str(labelList[0])+"  " , distToRoad=labelList[1], distToCar=labelList[2], rankOfDanger=labelList[3])
         item.setSizeHint(row.minimumSizeHint())
 
-        # Associate the custom widget to the list entry
+
         self.listWidget.setItemWidget(item, row)
 
-    def meshOnOffClicked(self):
-        self.floor_mesh_active = not self.floor_mesh_active
-        if self.floor_mesh_active:
-            self.call.meshOnOff.setIcon(QIcon("assets\on-button.png"))
-        else:
-            self.call.meshOnOff.setIcon(QIcon("assets\off-button.png"))
-        print(self.floor_mesh_active)
-
     def run(self):
-        self.dt = Detector(self, weights='weights\\yolov5s.pt', svo=None, img_size=416, conf_thres=0.6)
+
+        self.dt = Detector(self, weights='weights\\05052022_best.pt', svo=None, img_size=736, conf_thres=0.4)
+        # weights\\test_notebook_best.pt ev ortamında not defteri ile test yaparken kullanılabilir.
+
 
     def displayImage(self,lbl, img,window=1):
         qformat=QImage.Format_Indexed8
